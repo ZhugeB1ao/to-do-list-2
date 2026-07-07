@@ -9,31 +9,27 @@ body {
     font-weight: 300;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 100%;
-}
-
-:focus {
-    outline: 0;
-}
-
-.hidden {
-    display: none;
+    min-height: 100%;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 #todoapp {
     background:var(--surface-a30);
     padding: 2em;
-    min-height: 50vh;
-    min-width: 50vh;
+    margin: 2em auto;
+    width: min(100% - 2rem, 520px);
+    min-height: 80vh;
+    box-sizing: border-box;
 }
 
 /*Header*/
 #header h1 {
     width: 100%;
-    font-size: 100px;
+    font-size: clamp(48px, 16vw, 100px);
     font-weight: 100;
     text-align: center;
     color: var(--primary-a10);
@@ -78,7 +74,7 @@ hr {
 
 
 /*Main*/
-.todoapp #main .find-section {
+#todoapp #main .find-section {
     width: 100%;
 }
 
@@ -92,11 +88,14 @@ hr {
 .todo-list {
     list-style-type: none;
     font-size: 24px;
+    max-height: 50vh;
+    padding: 0;
+    overflow-y: auto;
 }
 
 .todo-item{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     margin: 0.4em 0;
 }
@@ -106,6 +105,28 @@ hr {
     margin: 0;
 }
 
+li.completed .todo-desc {
+    text-decoration: line-through;
+    color: var(--primary-a30);
+}
+
+.todo-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    margin-left: 1em;
+}
+
 .checkbox {
     margin: 0;
+}
+
+.button-delete {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    color: var(--surface-a10);
+    background-color: var(--primary-a50);
+    text-decoration: none;
 }
