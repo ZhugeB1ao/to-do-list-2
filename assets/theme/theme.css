@@ -1,0 +1,45 @@
+:root {
+    /** Theme primary colors */
+    --primary-a0: #d87207;
+    --primary-a10: #bc6205;
+    --primary-a20: #a05304;
+    --primary-a30: #854402;
+    --primary-a40: #6b3602;
+    --primary-a50: #532801;
+
+    /** Theme surface colors */
+    --surface-a0: #fff;
+    --surface-a10: #f2f2f2;
+    --surface-a20: #e4e4e4;
+    --surface-a30: #d7d7d7;
+    --surface-a40: #cacaca;
+    --surface-a50: #bdbdbd;
+
+    /** Theme tonal surface colors */
+    --surface-tonal-a0: #fdf1ea;
+    --surface-tonal-a10: #f0e5df;
+    --surface-tonal-a20: #e3d9d4;
+    --surface-tonal-a30: #d6cec9;
+    --surface-tonal-a40: #c9c2be;
+    --surface-tonal-a50: #bdb7b4;
+
+    /** Success colors */
+    --success-a0: #4aff6b;
+    --success-a10: #74ff86;
+    --success-a20: #94ff9d;
+
+    /** Warning colors */
+    --warning-a0: #ffac38;
+    --warning-a10: #ffb961;
+    --warning-a20: #ffc681;
+
+    /** Danger colors */
+    --danger-a0: #ff6161;
+    --danger-a10: #ff7c79;
+    --danger-a20: #ff9590;
+
+    /** Info colors */
+    --info-a0: #61c2ff;
+    --info-a10: #7dccff;
+    --info-a20: #96d5ff;
+}
