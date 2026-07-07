@@ -6,35 +6,12 @@ const tasksFindInput = document.querySelector(".input-find");
 const tasksList = document.querySelector(".todo-list");
 
 // Render tasks based on the current state and search input
-window.renderTasks = () => {
+const renderTasks = () => {
     const searchText = tasksFindInput.value.trim().toLowerCase();
     const filteredTasks = state.tasks.filter(task => task.desc.toLowerCase().includes(searchText));
-    makeTask(filteredTasks);
-}
-
-// Add new task use redux fake
-addTaskBtn.addEventListener('click', () => {
-    const text = taskInput.value.trim();
-    if (!text) return;
-
-    dispatch({
-        type: 'ADD_TASK',
-        payload: { id: Date.now(), desc: text, completed: false }
-    });
-
-    taskInput.value = '';
-});
-
-// Find task call renderTasks on input change
-tasksFindInput.addEventListener('input', () => {
-    renderTasks();
-});
-
-// Create task elements and append to the task list
-const makeTask = (arr) => {
     tasksList.innerHTML = '';
 
-    arr.forEach((task) => {
+    filteredTasks.forEach((task) => {
         const li = document.createElement("li");
         li.className = task.completed ? 'completed' : '';
         li.innerHTML = `
@@ -49,14 +26,35 @@ const makeTask = (arr) => {
 
         li.querySelector('.checkbox').addEventListener('change', () => {
             dispatch({ type: 'TOGGLE_TASK', payload: task.id });
+            renderTasks();
         });
 
         li.querySelector('.button-delete').addEventListener('click', () => {
             dispatch({ type: 'DELETE_TASK', payload: task.id });
+            renderTasks();
         });
 
         tasksList.appendChild(li);
     });
 }
+
+// Add new task use redux fake
+addTaskBtn.addEventListener('click', () => {
+    const text = taskInput.value.trim();
+    if (!text) return;
+
+    dispatch({
+        type: 'ADD_TASK',
+        payload: { id: Date.now(), desc: text, completed: false }
+    });
+
+    taskInput.value = '';
+    renderTasks();
+});
+
+// Find task call renderTasks on input change
+tasksFindInput.addEventListener('input', () => {
+    renderTasks();
+});
 
 renderTasks();

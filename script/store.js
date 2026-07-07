@@ -24,7 +24,6 @@ const tasksReducer = (action) => {
     }
 
     saveToLocalStorage()
-    renderTasks()
 }
 
 export { state, tasksReducer as dispatch }
