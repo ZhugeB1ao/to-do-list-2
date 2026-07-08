@@ -1,51 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list 2</title>
+    <link rel="stylesheet" href="./assets/style/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>To do list 2</title>
-        <link rel="stylesheet" href="./assets/style/index.css">
-    </head>
+  <body>
+    <div id="todoapp">
+      <!--Header-->
+      <header id="header">
+        <section class="hero">
+          <section class="info-section">
+            <h1>Todos</h1>
+            <p class="info-text">
+              You have <span class="info-count">0</span> tasks
+            </p>
+          </section>
 
-    <body>
-        <div id="todoapp">
-            <!--Header-->
-            <header id="header">
-                <h1>Todos</h1>
-                <!--Add Section-->
-                <section class="add-section">
+          <section class="find-section border-box">
+            <input
+              type="text"
+              placeholder="Type to find something..."
+              class="input input-find"
+            />
+            <span class="material-symbols-outlined find-icon" >
+                search
+            </span>
+          </section>
+        </section>
+
+        <!--Add Section-->
+        <section class="add-section border-box">
+          <span class="material-symbols-outlined add-icon" data-icon="add_task">
+            add_task
+          </span>
+          <input
+            type="text"
+            placeholder="Reading books ..."
+            class="input input-add"
+          />
+          <button class="button-add">ADD</button>
+        </section>
+      </header>
+
+      <!--Main-->
+      <main id="main">
+        <!--Find Section-->
+        <!-- <section class="find-section">
                     <input
-                            id="input-add"
-                            type="text"
-                            placeholder="Reading books ..."
-                            class="input input-add"
-                    >
-                    <button id="button-add" class="button">Add Here</button>
-                </section>
-                <hr />
-            </header>
-
-            <!--Main-->
-            <main id="main">
-                <!--Find Section-->
-                <section class="find-section">
-                    <input
-                            id="input-find"
                             type="text"
                             placeholder="Type to find something..."
                             class="input input-find"
                     >
-                </section>
+                </section> -->
 
+        <ul class="todo-list">
+          <div class="todo-item border-box">
+            <input
+                type="checkbox"
+                id="checkbox-1"
+                class="checkbox"
+                data-id="1"
+              />
 
-                <ul class="todo-list">
-                    
-                    <!--Put to do items here with JavaScript-->
+            <p class="todo-desc">
+                <span class="todo-desc-text">
+                    Learn JavaScript, HTML, CSS, and React
+                </span>
+            </p>
 
-                </ul>
-            </main>
-        </div>
-        <script type="module" src="./script/app.js"></script>
-    </body>
+            <button
+                class="button-delete"
+            >
+                <span
+                    class="material-symbols-outlined delete-icon"
+                    data-icon="delete"
+                    >delete</span
+                >
+            </button>
+          </div>
+
+          <div class="todo-item border-box">
+            <input
+                type="checkbox"
+                id="checkbox-2"
+                class="checkbox"
+                data-id="2"
+              />
+
+            <p class="todo-desc">
+                <span class="todo-desc-text">
+                    Do some exercises and eat healthy food
+                </span>
+            </p>
+            
+            <button
+                class="button-delete"
+            >
+                <span
+                    class="material-symbols-outlined delete-icon"
+                    data-icon="delete"
+                    >delete</span
+                >
+            </button>
+          </div>
+
+          <div class="todo-item border-box">
+            <input
+                type="checkbox"
+                id="checkbox-3"
+                class="checkbox"
+                data-id="3"
+              />
+
+            <p class="todo-desc">
+                <span class="todo-desc-text">
+                    Learn how to use Git and GitHub
+                </span>
+            </p>
+            
+            <button
+                class="button-delete"
+            >
+                <span
+                    class="material-symbols-outlined delete-icon"
+                    data-icon="delete"
+                    >delete</span
+                >
+            </button>
+          </div>
+          <!--Put to do items here with JavaScript-->
+        </ul>
+      </main>
+    </div>
+    <script type="module" src="./script/app.js"></script>
+  </body>
 </html>
