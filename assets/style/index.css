@@ -234,9 +234,10 @@ body {
 
 .checkbox {
     appearance: none;
-    flex: 0.5;
+    /* flex: 0.5; */
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
     border: 2px solid var(--primary-a30);
     cursor: pointer;
     border-radius: 0.2em;
