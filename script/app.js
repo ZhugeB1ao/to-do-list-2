@@ -1,7 +1,7 @@
 import { state, dispatch} from "./store.js";
 
 const taskInput = document.querySelector(".input-add");
-const addTaskBtn = document.querySelector("#button-add");
+const addTaskSec = document.querySelector(".add-section");
 const tasksFindInput = document.querySelector(".input-find");
 const tasksList = document.querySelector(".todo-list");
 
@@ -13,20 +13,36 @@ const renderTasks = () => {
 
     filteredTasks.forEach((task) => {
         const li = document.createElement("li");
-        li.className = task.completed ? 'completed' : '';
+        li.className = `todo-item border-box${task.completed ? " completed" : ""}`;
         li.innerHTML = `
-          <div class="todo-item">
-            <p class="todo-desc">${task.desc}</p>
-            <div class="todo-actions">
-                <input type="checkbox" id="checkbox-1" class="checkbox" data-id="${task.id}">
-                <button class="button-delete" data-id="${task.id}">x</button>
-            </div>
-          </div>
+            <input
+                type="checkbox"
+                id="checkbox-${task.id}"
+                class="checkbox"
+                data-id="${task.id}"
+                ${task.completed ? "checked" : ""}
+              />
+
+            <p class="todo-desc">
+                <span class="todo-desc-text">
+                    ${task.desc}
+                </span>
+            </p>
+
+            <button
+                class="button-delete"
+            >
+                <span
+                    class="material-symbols-outlined delete-icon"
+                    data-icon="delete"
+                    data-id="${task.id}"
+                    >delete</span
+                >
+            </button>
         `;
 
         li.querySelector('.checkbox').addEventListener('change', () => {
             dispatch({ type: 'TOGGLE_TASK', payload: task.id });
-            renderTasks();
         });
 
         li.querySelector('.button-delete').addEventListener('click', () => {
@@ -36,10 +52,14 @@ const renderTasks = () => {
 
         tasksList.appendChild(li);
     });
+
+    updateTaskCount();
 }
 
 // Add new task use redux fake
-addTaskBtn.addEventListener('click', () => {
+addTaskSec.addEventListener('submit', (e) => {
+    e.preventDefault();
+
     const text = taskInput.value.trim();
     if (!text) return;
 
@@ -56,5 +76,13 @@ addTaskBtn.addEventListener('click', () => {
 tasksFindInput.addEventListener('input', () => {
     renderTasks();
 });
+
+// Count tasks
+const infoCount = document.querySelector(".info-count");
+const updateTaskCount = () => {
+    const totalTasks = state.tasks.length;
+    infoCount.textContent = `${totalTasks}`;
+};
+
 
 renderTasks();
