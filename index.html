@@ -24,19 +24,19 @@
           </section>
 
           <section class="find-section border-box">
-            <input
-              type="text"
-              placeholder="Type to find something..."
-              class="input input-find"
-            />
             <span class="material-symbols-outlined find-icon" >
                 search
             </span>
+            <input
+              type="text"
+              placeholder="Find something..."
+              class="input input-find"
+            />
           </section>
         </section>
 
         <!--Add Section-->
-        <section class="add-section border-box">
+        <form class="add-section border-box">
           <span class="material-symbols-outlined add-icon" data-icon="add_task">
             add_task
           </span>
@@ -45,98 +45,37 @@
             placeholder="Reading books ..."
             class="input input-add"
           />
-          <button class="button-add">ADD</button>
-        </section>
+          <button class="button-add" type="submit">ADD</button>
+        </form>
       </header>
 
       <!--Main-->
       <main id="main">
-        <!--Find Section-->
-        <!-- <section class="find-section">
-                    <input
-                            type="text"
-                            placeholder="Type to find something..."
-                            class="input input-find"
-                    >
-                </section> -->
-
         <ul class="todo-list">
-          <div class="todo-item border-box">
-            <input
-                type="checkbox"
-                id="checkbox-1"
-                class="checkbox"
-                data-id="1"
-              />
-
-            <p class="todo-desc">
-                <span class="todo-desc-text">
-                    Learn JavaScript, HTML, CSS, and React
-                </span>
-            </p>
-
-            <button
-                class="button-delete"
-            >
-                <span
-                    class="material-symbols-outlined delete-icon"
-                    data-icon="delete"
-                    >delete</span
-                >
-            </button>
-          </div>
-
-          <div class="todo-item border-box">
-            <input
-                type="checkbox"
-                id="checkbox-2"
-                class="checkbox"
-                data-id="2"
-              />
-
-            <p class="todo-desc">
-                <span class="todo-desc-text">
-                    Do some exercises and eat healthy food
-                </span>
-            </p>
-            
-            <button
-                class="button-delete"
-            >
-                <span
-                    class="material-symbols-outlined delete-icon"
-                    data-icon="delete"
-                    >delete</span
-                >
-            </button>
-          </div>
-
-          <div class="todo-item border-box">
-            <input
-                type="checkbox"
-                id="checkbox-3"
-                class="checkbox"
-                data-id="3"
-              />
-
-            <p class="todo-desc">
-                <span class="todo-desc-text">
-                    Learn how to use Git and GitHub
-                </span>
-            </p>
-            
-            <button
-                class="button-delete"
-            >
-                <span
-                    class="material-symbols-outlined delete-icon"
-                    data-icon="delete"
-                    >delete</span
-                >
-            </button>
-          </div>
-          <!--Put to do items here with JavaScript-->
+          <!-- Task items will be dynamically added here -->
         </ul>
+
+        <div class="button-group">
+          <button class="button-done button-link" type="button">
+            
+            <span class="button-text">
+              <span class="material-symbols-outlined all-done-icon all-icons" data-icon="done_all">
+                done_all
+              </span>
+              Mark All as Done
+            </span>
+          </button>
+
+          <button class="button-clear button-link" type="button">
+            <span class="button-text">
+              <span class="material-symbols-outlined all-clear-icon all-icons" data-icon="clear_all">
+                clear_all
+              </span>
+              Clear All
+            </span>
+          </button>
+        </div>
+        
       </main>
     </div>
     <script type="module" src="./script/app.js"></script>
