@@ -15,9 +15,15 @@ const tasksReducer = (action) => {
         case 'DELETE_TASK':
             state.tasks = state.tasks.filter((task) => task.id !== action.payload)
             break
+        case `DELETE_ALL_TASKS`:
+            state.tasks = []
+            break
         case 'TOGGLE_TASK':
             const task = state.tasks.find((task) => task.id === action.payload)
             if (task) task.completed = !task.completed
+            break
+        case `MARK_ALL_TASKS_COMPLETED`:
+            state.tasks.forEach((task) => task.completed = true)
             break
         default:
             return
