@@ -4,6 +4,7 @@ const taskInput = document.querySelector(".input-add");
 const addTaskSec = document.querySelector(".add-section");
 const tasksFindInput = document.querySelector(".input-find");
 const tasksList = document.querySelector(".todo-list");
+const findSection = document.querySelector(".find-section");
 
 // Render tasks based on the current state and search input
 const renderTasks = () => {
@@ -41,8 +42,14 @@ const renderTasks = () => {
             </button>
         `;
 
-        li.querySelector('.checkbox').addEventListener('change', () => {
-            dispatch({ type: 'TOGGLE_TASK', payload: task.id });
+        const checkbox = li.querySelector('.checkbox');
+        checkbox.addEventListener('change', (event) => {
+            dispatch({
+                type: 'TOGGLE_TASK',
+                payload: task.id
+            });
+
+            li.classList.toggle('completed', event.currentTarget.checked);
         });
 
         li.querySelector('.button-delete').addEventListener('click', () => {
@@ -54,6 +61,7 @@ const renderTasks = () => {
     });
 
     updateTaskCount();
+    hideButtonsIfNoTasks();
 }
 
 // Add new task use redux fake
@@ -84,5 +92,36 @@ const updateTaskCount = () => {
     infoCount.textContent = `${totalTasks}`;
 };
 
+// Mark all tasks as completed
+const buttonDoneAll = document.querySelector(".button-done");
+buttonDoneAll.addEventListener('click', () => {
+    dispatch({ type: 'MARK_ALL_TASKS_COMPLETED' });
+    const taskItems = tasksList.querySelectorAll('.todo-item');
 
+    taskItems.forEach((item) => {
+        const checkbox = item.querySelector('.checkbox');
+
+        if (!checkbox.checked) {
+            checkbox.checked = true;
+            item.classList.add('completed');
+        }
+    });
+});
+
+// Clear all tasks
+const buttonClearAll = document.querySelector(".button-clear");
+buttonClearAll.addEventListener('click', () => {
+    dispatch({ type: 'DELETE_ALL_TASKS' });
+    renderTasks();
+});
+
+// Hide funtions if there are no tasks
+const hideButtonsIfNoTasks = () => {
+    const totalTasks = state.tasks.length;
+    buttonDoneAll.style.display = totalTasks > 0 ? 'inline-block' : 'none';
+    buttonClearAll.style.display = totalTasks > 0 ? 'inline-block' : 'none';
+    findSection.style.display = totalTasks > 0 ? 'block' : 'none';
+};
+
+// Initial render
 renderTasks();
