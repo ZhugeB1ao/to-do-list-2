@@ -4,6 +4,7 @@ const taskInput = document.querySelector(".input-add");
 const addTaskSec = document.querySelector(".add-section");
 const tasksFindInput = document.querySelector(".input-find");
 const tasksList = document.querySelector(".todo-list");
+const findSection = document.querySelector(".find-section");
 
 // Render tasks based on the current state and search input
 const renderTasks = () => {
@@ -60,6 +61,7 @@ const renderTasks = () => {
     });
 
     updateTaskCount();
+    hideButtonsIfNoTasks();
 }
 
 // Add new task use redux fake
@@ -112,6 +114,14 @@ buttonClearAll.addEventListener('click', () => {
     dispatch({ type: 'DELETE_ALL_TASKS' });
     renderTasks();
 });
+
+// Hide funtions if there are no tasks
+const hideButtonsIfNoTasks = () => {
+    const totalTasks = state.tasks.length;
+    buttonDoneAll.style.display = totalTasks > 0 ? 'inline-block' : 'none';
+    buttonClearAll.style.display = totalTasks > 0 ? 'inline-block' : 'none';
+    findSection.style.display = totalTasks > 0 ? 'block' : 'none';
+};
 
 // Initial render
 renderTasks();
